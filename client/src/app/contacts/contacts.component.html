@@ -1,0 +1,64 @@
+<div class="container">
+  <h2 class="page-header"> Add Contact </h2><hr>
+  <form (submit)="addContact()">
+    <div class="form-group">
+      <label>First Name: </label>
+      <input type="text" [(ngModel)]="first_name" name="first_name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Last Name: </label>
+      <input type="text" [(ngModel)]="last_name" name="last_name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Phone: </label>
+      <input type="text" [(ngModel)]="phone" name="phone" class="form-control">
+    </div>
+    <input type="submit" class="btn btn btn-default">
+  </form>
+</div>
+
+<hr/>
+
+<div class="container">
+    <h2 class="page-header"> Contact List </h2>
+  <div class="row" *ngFor= "let con of contacts">
+    <div class="col-md-2 offset1">
+        {{con.first_name}}
+    </div>
+    <div class="col-md-2">
+      {{con.last_name}}
+  </div>
+  <div class="col-md-2">
+    {{con.phone}}
+</div>
+<div class="col-md-2">
+  <input type="button" class="btn btn-danger" (click)= "deleteContact(con._id)" value="Delete">
+</div>
+<div class="col-md-2">
+  <input type="button" class="btn btn-success" (click)= "onUpdateContactClick(con._id)" value="Update">
+</div>
+<br/>
+<br/>
+  </div>
+</div>
+
+<div class="container" *ngIf = "UpdateVisible">
+  <h2 class="page-header"> Update Contact </h2><hr>
+  <form (submit)="updateContact(newContact._id)">
+    <div class="form-group">
+      <label>First Name: </label>
+      <input type="text" [(ngModel)]="newContact.first_name" name="first_name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Last Name: </label>
+      <input type="text" [(ngModel)]="newContact.last_name" name="last_name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Phone: </label>
+      <input type="text" [(ngModel)]="newContact.phone" name="phone" class="form-control">
+    </div>
+    <input type="submit" class="btn btn btn-default">
+  </form>
+</div>
+
+<hr/>
